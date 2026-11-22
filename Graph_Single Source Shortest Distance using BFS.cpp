@@ -8,14 +8,13 @@ void bfs(int src)
     queue<int> q;
     q.push(src);
     visited[src] = true;
-    lev[src]=0;
+    lev[src] = 0;
     while (!q.empty())
     {
         // ber kore ana
         int par = q.front();
         q.pop();
-        
-      
+
         for (int child : adj_list[par])
         {
             if (visited[child] == false)
@@ -23,17 +22,17 @@ void bfs(int src)
                 q.push(child);
                 // cout<child<<" ";
                 visited[child] = true;
-                lev[child]=lev[par]+1;
+                lev[child] = lev[par] + 1;
             }
         }
     }
-    cout<<endl;
+    cout << endl;
 }
 int main()
 {
     int n, e;
     cin >> n >> e;
-    vector<int> adj_list[n];
+   
     while (e--)
     {
         int a, b;
@@ -43,12 +42,12 @@ int main()
     }
     memset(visited, false, sizeof(visited));
     memset(lev, -1, sizeof(lev));
-    int src,dst;
-    cin>>src>>dst;
+    int src, dst;
+    cin >> src >> dst;
     bfs(src);
-    for(int i=0;i<n;i++){
-        cout<<i<<"->"<<lev[i]<<endl;
-    }
-   
+    // for(int i=0;i<n;i++){
+    //  cout<<i<<"->"<<lev[i]<<endl;
+    // }
+    cout << lev[dst] << endl;
     return 0;
 }
